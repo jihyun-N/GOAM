@@ -23,12 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
       response.results.forEach((movie) => {
         movieCardList.innerHTML += `
               <div class="movie-card" id="${movie.id}" onclick="movieId(${movie.id})">
+              <a href="./test1.html">
                 <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
                 <h3 class="movie-title">${movie.original_title}</h3>
                 <p>${movie.overview}</p>
                 <p>Rating:${movie.vote_average}</p>
                 <button type="button">상세정보</button>
                 <button type="button">리뷰</button>
+              </a>
               </div>`;
       });
     })
