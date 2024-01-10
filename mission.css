@@ -1,0 +1,58 @@
+.flex-box-parent {
+  display: grid;
+  justify-content: center;
+  background-color: pink;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.movie-card {
+  justify-self: center;
+  cursor: pointer;
+  user-select: none;
+  background-color: bisque;
+  margin: 10% 10%;
+  padding: 50px;
+  width: 400px;
+  height: 800px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightsalmon;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: pink;
+  height: 40px;
+  padding-top: 40px;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  border: 1px solid black;
+}
+
+label {
+  margin: 10px;
+  font-size: 25px;
+}
+
+button {
+  margin: 3px;
+  height: 36px;
+  border: 1px solid black;
+}
+
+body {
+  margin: 0;
+}
