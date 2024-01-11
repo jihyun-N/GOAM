@@ -2,14 +2,9 @@ body {
     height: 200vh;  /* 맨위로 보여주기위해 했어요 */
     
 }
-.backLink {
+#subTop{
     position: fixed;
-    cursor: pointer;
-}
-
-#scrollToTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
