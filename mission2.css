@@ -1,10 +1,19 @@
 body {
-    height: 200vh;  /* 맨위로 보여주기위해 했어요 */
-    
+  height: 200vh; /* 맨위로 보여주기위해 했어요 */
 }
-#subTop{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+#subTop {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.imgStyle {
+  width: 55vw;
+  /* 사진 크기 조정 */
+}
+
+.cardBox {
+  width: 100%;
+  overflow: hidden; /* 나보다 큰놈 안보이는 기능 */
 }

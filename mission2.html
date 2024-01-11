@@ -75,8 +75,8 @@
           let cardReview = document.getElementById("cardReview");
 
           cardReview.innerHTML += `
-              <div>
-                  <img src="https://image.tmdb.org/t/p/w342${response.poster_path}">  
+              <div class="cardBox">
+                  <img class="imgStyle" src="https://image.tmdb.org/t/p/original${response.backdrop_path}">
                   <div><h3>${response.title}</h3></div>
                   <div>${response.overview}</div>
                   <div>${response.release_date}</div>
