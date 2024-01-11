@@ -5,18 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>내배캠 최고 평점 영화 콜렉션</title>
-
+  <link rel="stylesheet" href="./mission2.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
 <body>
+  <a class="backLink" href="./mission.html">🔙</a>
   <div id="cardReview"></div>
+  <button id="scrollToTopBtn">맨 위로</button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
   <script>
+    const scrollTop = document.getElementById("scrollToTopBtn");
+
+    scrollTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
     // 넘어온 영화ID 값으로 영화 Details API 요청
     let movieId = localStorage.getItem("movieId"); // 위와 같이 getItem 메소드를 사용하면 key를 통해 저장된 value 값을 불러올 수 있습니다.
     const options = {
