@@ -50,7 +50,8 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
       // 넘어온 영화ID 값으로 영화 Details API 요청
-      let movieId = localStorage.getItem("movieId"); // 위와 같이 getItem 메소드를 사용하면 key를 통해 저장된 value 값을 불러올 수 있습니다.
+      let movieId = localStorage.getItem("movieId");
+      // 위와 같이 getItem 메소드를 사용하면 key를 통해 저장된 value 값을 불러올 수 있습니다.
       const options = {
         method: "GET",
         headers: {

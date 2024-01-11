@@ -34,8 +34,6 @@ function renderCard(movies) {
             <h3 class="movie-title">${movie.original_title}</h3>
             <p>${movie.overview}</p>
             <p>Rating:${movie.vote_average}</p>
-            <button type="submit">상세정보</button>
-            <button type="button">리뷰</button>
           </div>
           </div>`;
   });
@@ -64,6 +62,6 @@ function searchMovie() {
   const searchMovieList = searchdata.filter((movie) => {
     return movie.title.toLowerCase().includes(searchTagValue);
   });
-  renderCard(searchMovieList);
+  renderCard(searchMovieList); // 이 함수를 통해 전역변수를 끌어다가 함수 분리 및 movieCardList.innerHTML 통합
   console.log(searchMovieList);
 }
