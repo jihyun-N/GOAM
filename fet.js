@@ -22,23 +22,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
       response.results.forEach((movie) => {
         movieCardList.innerHTML += `
-              <div class="movie-card" id="${movie.id}" onclick="movieId(${movie.id})">
-              <a href="./test1.html">
+              <div class="movie-card" id="${movie.id}" onclick="movieIdtemp(id)">
+              <div>
                 <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
                 <h3 class="movie-title">${movie.original_title}</h3>
                 <p>${movie.overview}</p>
                 <p>Rating:${movie.vote_average}</p>
-                <button type="button">상세정보</button>
+                <button type="submit">상세정보</button>
                 <button type="button">리뷰</button>
-              </a>
+              </div>
               </div>`;
       });
     })
     .catch((err) => console.error(err));
 });
-// 클릭시 alert 창
-function movieId(id) {
-  alert(`아이디는 : ${id}인데~~`);
+
+// 클릭시 alert 창 (일단 임시함수로 변경..)
+function movieIdtemp(id) {
+  localStorage.setItem("movieId", id); // 저장공간 -> 바구니
+  //위와 같이 setItem 메소드를 사용하면 key와 value를 로컬 스토리지에 저장할 수 있습니다. 만약 이미 저장된 key 값이 있다면, 이전에 저장된 value 값을 대체합니다.
+  let targetUrl = "mission2.html";
+
+  location.href = targetUrl;
+  // 페이지 이동하기, 새창 띄우기
+  //   var link = "http://www.naver.com";
+  //   location.href = link;
+  //   location.replace(link);
+  //   window.open(link);
+  //   replace와 href의 차이는
+  // href는 그대로 페이지 이동을 의미하지만,
+  // replace는 현재 페이지에 덮어씌우기 때문에 replace를 사용한 다음에는 이전 페이지로 돌아갈 수 없다.
 }
 
 // 검색기능 구현
@@ -51,11 +64,13 @@ function searchMovie() {
 
   movieCardList.innerHTML = "";
   searchMovieList.forEach((movie) => {
-    movieCardList.innerHTML += `<div class="movie-card" id="${movie.id}" onclick="movieId(${movie.id})">
+    movieCardList.innerHTML += `<div class="movie-card" id="${movie.id}" onclick="movieId(id)">
       <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
       <h3 class="movie-title">${movie.original_title}</h3>
       <p>${movie.overview}</p>
       <p>Rating:${movie.vote_average}</p>
+      <button type="button">상세정보</button>
+      <button type="button">리뷰</button>
     </div>`;
   });
 
