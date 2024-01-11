@@ -19,24 +19,27 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => {
       movieCardList = document.getElementById("movieCardList");
       searchdata = response.results;
-
-      response.results.forEach((movie) => {
-        movieCardList.innerHTML += `
-              <div class="movie-card" id="${movie.id}" onclick="movieIdtemp(id)">
-              <div>
-                <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
-                <h3 class="movie-title">${movie.original_title}</h3>
-                <p>${movie.overview}</p>
-                <p>Rating:${movie.vote_average}</p>
-                <button type="submit">상세정보</button>
-                <button type="button">리뷰</button>
-              </div>
-              </div>`;
-      });
+      renderCard(response.results);
     })
     .catch((err) => console.error(err));
 });
 
+function renderCard(movies) {
+  movieCardList.innerHTML = "";
+  movies.forEach((movie) => {
+    movieCardList.innerHTML += `
+          <div class="movie-card" id="${movie.id}" onclick="movieIdtemp(id)">
+          <div>
+            <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
+            <h3 class="movie-title">${movie.original_title}</h3>
+            <p>${movie.overview}</p>
+            <p>Rating:${movie.vote_average}</p>
+            <button type="submit">상세정보</button>
+            <button type="button">리뷰</button>
+          </div>
+          </div>`;
+  });
+}
 // 클릭시 alert 창 (일단 임시함수로 변경..)
 function movieIdtemp(id) {
   localStorage.setItem("movieId", id); // 저장공간 -> 바구니
@@ -61,18 +64,6 @@ function searchMovie() {
   const searchMovieList = searchdata.filter((movie) => {
     return movie.title.toLowerCase().includes(searchTagValue);
   });
-
-  movieCardList.innerHTML = "";
-  searchMovieList.forEach((movie) => {
-    movieCardList.innerHTML += `<div class="movie-card" id="${movie.id}" onclick="movieId(id)">
-      <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
-      <h3 class="movie-title">${movie.original_title}</h3>
-      <p>${movie.overview}</p>
-      <p>Rating:${movie.vote_average}</p>
-      <button type="button">상세정보</button>
-      <button type="button">리뷰</button>
-    </div>`;
-  });
-
+  renderCard(searchMovieList);
   console.log(searchMovieList);
 }
