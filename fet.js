@@ -42,10 +42,10 @@ function renderCard(movies) {
     movieCardList.innerHTML += `
           <div class="movie-card" id="${movie.id}" onclick="movieIdtemp(id)">
           <div>
-            <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
+            <img src="https://image.tmdb.org/t/p/w185${movie.poster_path}" alt="${movie.original_title}">
+            <p>  
             <h3 class="movie-title">${movie.title}</h3>
             <p>평점 : ✰ ${round} / ✰ 10</p>
-            <br>
             <p>${overviewLength(overview,80)}</p>
           </div>
           </div>`;
@@ -90,4 +90,11 @@ form.addEventListener("submit", function searchMovie(e) {
   });
   renderCard(searchMovieList); // 이 함수를 통해 전역변수를 끌어다가 함수 분리 및 movieCardList.innerHTML 통합
   console.log(searchMovieList);
+});
+
+// 스크롤 맨 위
+const scrollTop = document.getElementById("scrollToTopBtn");
+
+scrollTop.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
