@@ -19,7 +19,7 @@ const options = {
 fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
   .then((response) => response.json())
   .then((response) => {
-    let detailInfo = document.getElementById("detailInfo");
+    let detailInfo = document.getElementById("cardReview");
     // 영화 장르 구하기
     const genreNames = response.genres.map((genre) => genre.name);
     // 국가 분류
@@ -45,7 +45,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
         }
 
         const nativeName = getNativeName(...countries);
-        console.log(nativeName);
 
         countriesTap.innerHTML += `
       <div>국가 : ${nativeName}</div>
@@ -58,10 +57,10 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
     // 소수점 두번째까지는 나오게
     const round = Math.round(voteAverage * 100) / 100;
 
-    const back = document.getElementById("back")
+    const back = document.getElementById("back");
     back.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${response.backdrop_path})`;
-    const title = document.createElement("h1")
-    title.textContent = `${response.title}`
+    const title = document.createElement("h1");
+    title.textContent = `${response.title}`;
     back.appendChild(title);
 
     detailInfo.innerHTML += `
@@ -82,7 +81,8 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
         <br>
         <span>상영시간 : ${response.runtime}분</span>
       </div>
-  </div>`;})
+  </div>`;
+  })
   .catch((err) => console.error(err));
 
 // 예고편 등등 영상자료
