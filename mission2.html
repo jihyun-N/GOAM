@@ -108,6 +108,11 @@
             })
             .catch(err => console.error(err));
 
+          // 평점
+          const voteAverage = response.vote_average;
+          // 소수점 두번째까지는 나오게
+          const round = Math.round(voteAverage * 100)/100;
+
           cardReview.innerHTML += `
               <div class="cardBox">
                   <img class="imgStyle" src="https://image.tmdb.org/t/p/original${response.backdrop_path}">
@@ -116,7 +121,7 @@
                   <div id="countries"></div>
                   <div>장르 : ${genreNames}</div>
                   <div>상영시간 : ${response.runtime}분</div>
-                  <div>평점 : ${response.vote_average}</div>
+                  <div>평점 : ✰ ${round}</div>
                   <div>줄거리 : ${response.overview}</div>
               </div>`;
         })

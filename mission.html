@@ -16,10 +16,12 @@
     </header>
     <section class="search">
       <label>영화검색 :</label>
+      <form>
       <div>
-        <input type="text" id="search-input" placeholder="영화명 넣어봐~" />
+        <input type="text" id="search-input" placeholder="영화명 넣어봐~" required/>
         <button type="button" id="search-btn" onclick="searchMovie()">검색</button>
       </div>
+    </form>
       <ul>
         <li style="list-style: none">
           <div class="nav-link disabled" aria-disabled="true">현재시간 : <span id="clock">-</span></div>
