@@ -62,3 +62,11 @@ span {
   max-width: 1000px;
   min-width: 300px;
 }
+
+.comment {
+  margin: 30px auto 30px auto;
+}
+
+.input-group-text {
+  width: 100px;
+}
