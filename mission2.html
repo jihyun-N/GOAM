@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./mission2.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script type="text/javascript" src="./time.js"></script>
 </head>
 
 <body>
@@ -22,11 +23,13 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="./mission.html">Home</a>
           <button class="nav-link" id="scrollToTopBtn">Top</button>
+          <div class="nav-link disabled" aria-disabled="true">현재시간 : <span id="clock">-</span></div>
         </div>
       </div>
     </div>
   </nav>
   <div id="cardReview"></div>
+  <div id="cardVideos"></div>
   <div id="reply">
     <div class="input-group mb-3">
       <span class="input-group-text">닉네임</span>
@@ -69,19 +72,79 @@
         }
       };
 
-      fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options)
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
         .then((response) => response.json())
         .then((response) => {
           let cardReview = document.getElementById("cardReview");
+          // 영화 장르 구하기
+          const genreNames = response.genres.map(genre => genre.name);
+          // 국가 분류
+          const countries = response.production_countries.map(country => country.name);
+
+           // 국가 한글로 번역
+           const optionsCountries = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZmE1ZGVmODMzYWZjNmVmOGQ2ZjQwY2Q0YjcwYTAzMyIsInN1YiI6IjY1OWE1MTAzYmQ1ODhiMDIwNDU3YTEwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4Hloft7510m0mwl5LvZ5P_d_BjLkkVF-oc_SRJPlZe4'
+            }
+          };
+
+          fetch('https://api.themoviedb.org/3/configuration/countries?language=ko', optionsCountries)
+            .then(response => response.json())
+            .then(response => {
+              const countriesTap = document.getElementById("countries");
+              function getNativeName(englishName) {
+                const country = response.find(item => item.english_name === englishName);
+                return country ? country.native_name : null;
+              }
+
+              const nativeName = getNativeName(...countries);
+              console.log(nativeName);
+
+              countriesTap.innerHTML += `
+            <div>국가 : ${nativeName}</div>
+          `
+            })
+            .catch(err => console.error(err));
 
           cardReview.innerHTML += `
               <div class="cardBox">
                   <img class="imgStyle" src="https://image.tmdb.org/t/p/original${response.backdrop_path}">
                   <div><h3>${response.title}</h3></div>
-                  <div>${response.overview}</div>
-                  <div>${response.release_date}</div>
-                  <div>${response.vote_average}</div>
+                  <div>개봉 : ${response.release_date}</div>
+                  <div id="countries"></div>
+                  <div>장르 : ${genreNames}</div>
+                  <div>상영시간 : ${response.runtime}분</div>
+                  <div>평점 : ${response.vote_average}</div>
+                  <div>줄거리 : ${response.overview}</div>
               </div>`;
+        })
+        .catch((err) => console.error(err));
+
+      // 예고편 등등 영상자료
+      const optionsVideos = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZmE1ZGVmODMzYWZjNmVmOGQ2ZjQwY2Q0YjcwYTAzMyIsInN1YiI6IjY1OWE1MTAzYmQ1ODhiMDIwNDU3YTEwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4Hloft7510m0mwl5LvZ5P_d_BjLkkVF-oc_SRJPlZe4'
+        }
+      };
+
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=ko`, optionsVideos)
+        .then(response => response.json())
+        .then(response => {
+          const cardVideos = document.getElementById("cardVideos");
+          const videoInfoArray = response.results.map(video => ({ name: video.name, key: video.key }));
+          videoInfoArray.forEach(videoInfo => {
+            cardVideos.innerHTML += `
+              <div>
+                <h3>${videoInfo.name}</h3>
+                <iframe src="https://www.youtube.com/embed/${videoInfo.key}"></iframe>
+              </div>`;
+          });
+
+
         })
         .catch((err) => console.error(err));
 

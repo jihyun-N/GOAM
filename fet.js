@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   fetch(
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+    "https://api.themoviedb.org/3/movie/top_rated?language=ko&page=1",
     options
   )
     .then((response) => response.json())
@@ -31,7 +31,7 @@ function renderCard(movies) {
           <div class="movie-card" id="${movie.id}" onclick="movieIdtemp(id)">
           <div>
             <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
-            <h3 class="movie-title">${movie.original_title}</h3>
+            <h3 class="movie-title">${movie.title}</h3>
             <p>${movie.overview}</p>
             <p>Rating:${movie.vote_average}</p>
           </div>

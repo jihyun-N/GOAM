@@ -1,6 +1,3 @@
-body {
-  height: 200vh; /* 맨위로 보여주기위해 했어요 */
-}
 #subTop {
   position: sticky;
   top: 0;
