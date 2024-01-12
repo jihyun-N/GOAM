@@ -58,11 +58,14 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
     // 소수점 두번째까지는 나오게
     const round = Math.round(voteAverage * 100) / 100;
 
+    const back = document.getElementById("back")
+    back.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${response.backdrop_path})`;
+    const title = document.createElement("h1")
+    title.textContent = `${response.title}`
+    back.appendChild(title);
+
     detailInfo.innerHTML += `
-    <div id="back">
-      <h1 id="title">${response.title}</h1>
-    </div>
-    <div>
+    <div style="position: absolute; top: 300px; left: 80%;">
       <img src="https://image.tmdb.org/t/p/w185${response.poster_path}" alt="${response.original_title}">
     </div>
     <div class="grdHz">
@@ -73,7 +76,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
       </div>
       <div>
         <span>개봉 : ${response.release_date}</span>
-        <br>
         <span id="countries"></span>
         <br>
         <span>장르 : ${genreNames}</span>
