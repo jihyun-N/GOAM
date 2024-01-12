@@ -127,8 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const newComment = document.createElement("div");
       newComment.className = "comment";
       newComment.innerHTML = `
-        <strong>${nickname}</strong> (${rating}): ${commentText}
-        <button class="btn btn-outline-dark" onclick="deleteComment(this)">삭제</button>`;
+        <div class="input-group">
+        <span class="input-group-text"><strong>${nickname}</strong><br><span>${rating}</span></span>
+        <textarea class="form-control" aria-label="With textarea">${commentText}</textarea>
+        </div>`;
 
       const commentsList = document.getElementById("commentsList");
       commentsList.appendChild(newComment);
