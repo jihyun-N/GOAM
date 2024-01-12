@@ -16,13 +16,12 @@
 }
 
 #back {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
   background-size: cover;
   background-attachment: fixed;
   height: 450px;
 }
 
-#title {
+h1 {
   position: absolute;
   top: 350px;
   left: 50px;
@@ -34,6 +33,9 @@
 #poster {
   position: absolute;
   width: 200px;
+
+  top: 300px;
+  left: 80%
 }
 
 span {
