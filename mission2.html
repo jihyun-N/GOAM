@@ -10,6 +10,7 @@
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script type="text/javascript" src="./time.js"></script>
     <script defer type="text/javascript" src="./fet2.js"></script>
+    <script src="./weather.js"></script>
 </head>
 
 <body>
@@ -21,11 +22,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <ui class="navbar-nav me-auto mb-2 mb-lg-0">
           <a class="nav-link active" aria-current="page" href="./mission.html">Home</a>
           <button class="nav-link" id="scrollToTopBtn">Top</button>
           <div class="nav-link disabled" aria-disabled="true">현재시간 : <span id="clock">-</span></div>
-        </div>
+        </ui>
+        <spanclass="navbar-text" id="weatherText"></span>
       </div>
     </div>
   </nav>
