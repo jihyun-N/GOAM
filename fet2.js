@@ -45,7 +45,6 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
         }
 
         const nativeName = getNativeName(...countries);
-        console.log(nativeName);
 
         countriesTap.innerHTML += `
       <div>국가 : ${nativeName}</div>
