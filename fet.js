@@ -46,6 +46,7 @@ function renderCard(movies) {
             <p>  
             <h3 class="movie-title">${movie.title}</h3>
             <p>평점 : ✰ ${round} / ✰ 10</p>
+            <br>
             <p>${overviewLength(overview, 80)}</p>
           </div>
           </div>`;
