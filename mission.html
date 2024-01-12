@@ -6,20 +6,21 @@
     <title>내배캠 최고 평점 영화 콜렉션</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="./mission.css" />
-    <script type="text/javascript" src="./fet.js"></script>
+    <script defer type="text/javascript" src="./fet.js"></script>
     <script type="text/javascript" src="./time.js"></script>
   </head>
-
+  <!-- defer 미룬다 -->
   <body>
     <header>
       <h1>내배캠 최고 평점 영화 콜렉션</h1>
     </header>
     <section class="search">
       <label>영화검색 :</label>
-      <div>
+      <form class="searchForm">
         <input type="text" id="search-input" placeholder="영화명 넣어봐~" />
-        <button type="button" id="search-btn" onclick="searchMovie()">검색</button>
-      </div>
+        <button type="submit" id="search-btn">검색</button>
+      </form>
+      <!-- 폼이 버튼, 인풋 연결 -->
       <ul>
         <li style="list-style: none">
           <div class="nav-link disabled" aria-disabled="true">현재시간 : <span id="clock">-</span></div>
