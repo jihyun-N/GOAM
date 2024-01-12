@@ -19,8 +19,8 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="subTop">
       <div class="container-fluid">
-        <div class="navbar-brand" href="#">상세정보</div>
-        <button
+        <div class="navbar-brand" href="#">Detail</div>
+        <!-- <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -30,18 +30,24 @@
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ui class="navbar-nav me-auto mb-2 mb-lg-0">
-            <a class="nav-link active" aria-current="page" href="./goam.html">Home</a>
-            <button class="nav-link" id="scrollToTopBtn">Top</button>
-            <div class="nav-link disabled" aria-disabled="true">Time : <span id="clock">-</span></div>
+          <ui class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center bd-highlight">
+            <li class="flex-fill"><a class="nav-link active" aria-current="page" href="./goam.html">Home</a></li>
+            <li class="flex-fill"><a class="nav-link" id="scrollToTopBtn" style="cursor: pointer">Top</a></li>
+            <li class="flex-fill">
+              <div class="nav-link disabled" aria-disabled="true">
+                Time : <span id="clock" style="display: inline">-</span>
+              </div>
+            </li>
           </ui>
           <span class="navbar-text" id="weatherText"></span>
         </div>
       </div>
     </nav>
-    <div id="cardReview"></div>
+    <div id="cardReview">
+      <div id="back"></div>
+    </div>
     <div id="cardVideos"></div>
     <div id="reply">
       <div class="input-group mb-3">

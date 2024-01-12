@@ -19,7 +19,7 @@ const options = {
 fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
   .then((response) => response.json())
   .then((response) => {
-    let cardReview = document.getElementById("cardReview");
+    let detailInfo = document.getElementById("cardReview");
     // 영화 장르 구하기
     const genreNames = response.genres.map((genre) => genre.name);
     // 국가 분류
@@ -57,17 +57,31 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
     // 소수점 두번째까지는 나오게
     const round = Math.round(voteAverage * 100) / 100;
 
-    cardReview.innerHTML += `
-        <div class="cardBox">
-            <img class="imgStyle" src="https://image.tmdb.org/t/p/original${response.backdrop_path}">
-            <div><h3>${response.title}</h3></div>
-            <div>개봉 : ${response.release_date}</div>
-            <div id="countries"></div>
-            <div>장르 : ${genreNames}</div>
-            <div>상영시간 : ${response.runtime}분</div>
-            <div>평점 : ✰ ${round}</div>
-            <div>줄거리 : ${response.overview}</div>
-        </div>`;
+    const back = document.getElementById("back");
+    back.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${response.backdrop_path})`;
+    const title = document.createElement("h1");
+    title.textContent = `${response.title}`;
+    back.appendChild(title);
+
+    detailInfo.innerHTML += `
+    <div style="position: absolute; top: 300px; left: 80%;">
+      <img src="https://image.tmdb.org/t/p/w185${response.poster_path}" alt="${response.original_title}">
+    </div>
+    <div class="grdHz">
+      <div>
+        <span>평점 : ✰ ${round}</span>
+        <br>
+        <span>${response.overview}</span>
+      </div>
+      <div>
+        <span>개봉 : ${response.release_date}</span>
+        <span id="countries"></span>
+        <br>
+        <span>장르 : ${genreNames}</span>
+        <br>
+        <span>상영시간 : ${response.runtime}분</span>
+      </div>
+  </div>`;
   })
   .catch((err) => console.error(err));
 
@@ -113,8 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const newComment = document.createElement("div");
       newComment.className = "comment";
       newComment.innerHTML = `
-  <strong>${nickname}</strong> (${rating}): ${commentText}
-  <button class="btn btn-outline-dark" onclick="deleteComment(this)">삭제</button>`;
+        <strong>${nickname}</strong> (${rating}): ${commentText}
+        <button class="btn btn-outline-dark" onclick="deleteComment(this)">삭제</button>`;
 
       const commentsList = document.getElementById("commentsList");
       commentsList.appendChild(newComment);
