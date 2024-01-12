@@ -27,17 +27,17 @@ function renderCard(movies) {
     const overview = movie.overview;
 
     // ..더보기 추가
-    function overviewLength(overview, maxLength){
-      if(overview){
-        return overview.length > maxLength ? overview.substring(0,maxLength) + '...더보기' : overview;
+    function overviewLength(overview, maxLength) {
+      if (overview) {
+        return overview.length > maxLength ? overview.substring(0, maxLength) + "...더보기" : overview;
       }
       return null;
     }
 
-    // 평점 
+    // 평점
     const voteAverage = movie.vote_average;
     // 소수점 두번째까지는 나오게
-    const round = Math.round(voteAverage * 100)/100;
+    const round = Math.round(voteAverage * 100) / 100;
 
     movieCardList.innerHTML += `
           <div class="movie-card" id="${movie.id}" onclick="movieIdtemp(id)">
@@ -46,7 +46,7 @@ function renderCard(movies) {
             <p>  
             <h3 class="movie-title">${movie.title}</h3>
             <p>평점 : ✰ ${round} / ✰ 10</p>
-            <p>${overviewLength(overview,80)}</p>
+            <p>${overviewLength(overview, 80)}</p>
           </div>
           </div>`;
   });
@@ -55,7 +55,7 @@ function renderCard(movies) {
 function movieIdtemp(id) {
   localStorage.setItem("movieId", id); // 저장공간 -> 바구니
   //위와 같이 setItem 메소드를 사용하면 key와 value를 로컬 스토리지에 저장할 수 있습니다. 만약 이미 저장된 key 값이 있다면, 이전에 저장된 value 값을 대체합니다.
-  let targetUrl = "mission2.html";
+  const targetUrl = "mission2.html";
 
   location.href = targetUrl;
   // 페이지 이동하기, 새창 띄우기
@@ -80,7 +80,7 @@ function movieIdtemp(id) {
 // }
 
 // form 이벤트
-let form = document.querySelector(".searchForm");
+const form = document.querySelector(".searchForm");
 form.addEventListener("submit", function searchMovie(e) {
   e.preventDefault();
   let searchTagValue = document.getElementById("search-input").value.toLowerCase();
