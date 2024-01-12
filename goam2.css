@@ -15,6 +15,10 @@
   overflow: hidden; /* 나보다 큰놈 안보이는 기능 */
 }
 
+body {
+  background: linear-gradient(to bottom, rgb(255, 243, 216), rgb(255, 255, 255));
+}
+
 #back {
   background-size: cover;
   background-attachment: fixed;
