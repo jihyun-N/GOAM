@@ -1,63 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🐻G. O. A. M. 🐻</title>
-  <link rel="stylesheet" href="./mission2.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐻G. O. A. M. 🐻</title>
+    <link rel="stylesheet" href="./goam2.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
     <script type="text/javascript" src="./time.js"></script>
-    <script defer type="text/javascript" src="./fet2.js"></script>
+    <script defer type="text/javascript" src="./goam2.js"></script>
     <script src="./weather.js"></script>
-</head>
+  </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="subTop">
-    <div class="container-fluid">
-      <div class="navbar-brand" href="#">상세정보</div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ui class="navbar-nav me-auto mb-2 mb-lg-0">
-          <a class="nav-link active" aria-current="page" href="./mission.html">Home</a>
-          <button class="nav-link" id="scrollToTopBtn">Top</button>
-          <div class="nav-link disabled" aria-disabled="true">Time : <span id="clock">-</span></div>
-        </ui>
-        <spanclass="navbar-text" id="weatherText"></span>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="subTop">
+      <div class="container-fluid">
+        <div class="navbar-brand" href="#">상세정보</div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ui class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="nav-link active" aria-current="page" href="./goam.html">Home</a>
+            <button class="nav-link" id="scrollToTopBtn">Top</button>
+            <div class="nav-link disabled" aria-disabled="true">Time : <span id="clock">-</span></div>
+          </ui>
+          <span class="navbar-text" id="weatherText"></span>
+        </div>
       </div>
+    </nav>
+    <div id="cardReview"></div>
+    <div id="cardVideos"></div>
+    <div id="reply">
+      <div class="input-group mb-3">
+        <span class="input-group-text">닉네임</span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="nickname" />
+        <span class="input-group-text">비밀번호</span>
+        <input type="text" class="form-control" placeholder="Password" aria-label="Server" id="pw" />
+      </div>
+      <select class="form-select" aria-label="Default select example" id="rating">
+        <option selected>별점 선택</option>
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+      </select>
+      <div class="input-group">
+        <textarea class="form-control" aria-label="With textarea" id="comment"></textarea>
+        <button type="button" class="btn btn-outline-dark" id="submitBtn">작성</button>
+      </div>
+      <div id="commentsList"></div>
     </div>
-  </nav>
-  <div id="cardReview"></div>
-  <div id="cardVideos"></div>
-  <div id="reply">
-    <div class="input-group mb-3">
-      <span class="input-group-text">닉네임</span>
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="nickname">
-      <span class="input-group-text">비밀번호</span>
-      <input type="text" class="form-control" placeholder="Password" aria-label="Server" id="pw">
-    </div>
-    <select class="form-select" aria-label="Default select example" id="rating">
-      <option selected>별점 선택</option>
-      <option value="1">⭐</option>
-      <option value="2">⭐⭐</option>
-      <option value="3">⭐⭐⭐</option>
-      <option value="4">⭐⭐⭐⭐</option>
-      <option value="5">⭐⭐⭐⭐⭐</option>
-    </select>
-    <div class="input-group">
-      <textarea class="form-control" aria-label="With textarea" id="comment"></textarea>
-      <button type="button" class="btn btn-outline-dark" id="submitBtn">작성</button>
-    </div>
-    <div id="commentsList"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-    </script>
-   
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
