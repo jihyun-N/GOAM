@@ -24,13 +24,29 @@ document.addEventListener("DOMContentLoaded", function () {
 function renderCard(movies) {
   movieCardList.innerHTML = "";
   movies.forEach((movie) => {
+    const overview = movie.overview;
+
+    // ..더보기 추가
+    function overviewLength(overview, maxLength){
+      if(overview){
+        return overview.length > maxLength ? overview.substring(0,maxLength) + '...더보기' : overview;
+      }
+      return null;
+    }
+
+    // 평점 
+    const voteAverage = movie.vote_average;
+    // 소수점 두번째까지는 나오게
+    const round = Math.round(voteAverage * 100)/100;
+
     movieCardList.innerHTML += `
           <div class="movie-card" id="${movie.id}" onclick="movieIdtemp(id)">
           <div>
             <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.original_title}">  
             <h3 class="movie-title">${movie.title}</h3>
-            <p>${movie.overview}</p>
-            <p>Rating:${movie.vote_average}</p>
+            <p>평점 : ✰ ${round} / ✰ 10</p>
+            <br>
+            <p>${overviewLength(overview,80)}</p>
           </div>
           </div>`;
   });
