@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newComment.className = "comment";
       newComment.innerHTML = `
         <div class="input-group">
-        <span class="input-group-text"><strong>${nickname}</strong><br><span>${rating}</span></span>
+        <span class="input-group-text"><strong>${nickname}</strong><span>${rating}</span></span>
         <textarea class="form-control" aria-label="With textarea">${commentText}</textarea>
         </div>`;
 
