@@ -13,7 +13,7 @@ body {
   display: grid;
   justify-content: center;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .movie-card {
