@@ -70,3 +70,7 @@ span {
 .input-group-text {
   width: 100px;
 }
+
+#weatherId {
+  width: 2vw;
+}

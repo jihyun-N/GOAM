@@ -15,7 +15,7 @@ function weatherApi() {
         // https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2 에 맞는 아이콘 사용
         const weatherText =`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
-        weather.innerHTML = `<img src="${weatherText}" alt="Weather Icon" /> / ${round}°`;
+        weather.innerHTML = `<img id="weatherId" src="${weatherText}" alt="Weather Icon" /> / ${round}°`;
     });
 }
 
