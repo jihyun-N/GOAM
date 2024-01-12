@@ -46,9 +46,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
 
         const nativeName = getNativeName(...countries);
 
-        countriesTap.innerHTML += `
-      <div>국가 : ${nativeName}</div>
-    `;
+        countriesTap.innerHTML += `국가 : ${nativeName}`;
       })
       .catch((err) => console.error(err));
 
@@ -64,7 +62,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
     back.appendChild(title);
 
     detailInfo.innerHTML += `
-    <div style="position: absolute; top: 300px; left: 80%;">
+    <div style="position: absolute; top: 350px; left: 80%;">
       <img src="https://image.tmdb.org/t/p/w185${response.poster_path}" alt="${response.original_title}">
     </div>
     <div class="grdHz">
@@ -75,13 +73,15 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
       </div>
       <div>
         <span>개봉 : ${response.release_date}</span>
+        <br>
         <span id="countries"></span>
         <br>
         <span>장르 : ${genreNames}</span>
         <br>
         <span>상영시간 : ${response.runtime}분</span>
       </div>
-  </div>`;
+    </div>
+  `;
   })
   .catch((err) => console.error(err));
 
