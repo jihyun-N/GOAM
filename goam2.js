@@ -76,6 +76,7 @@ document.getElementById("reply").addEventListener("click", function (event) {
           <div class="input-group">
           <span class="input-group-text"><strong>${nickname}</strong><span>${rating}</span></span>
           <textarea class="form-control" aria-label="With textarea" disabled>${commentText}</textarea>
+          <button type="button" class="btn btn-outline-dark" id="deleteBtn">삭제</button>
           </div>`;
 
     const commentsList = document.getElementById("commentsList");
