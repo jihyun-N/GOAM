@@ -83,8 +83,6 @@ document.getElementById("reply").addEventListener("click", function (event) {
     const commentsList = document.getElementById("commentsList");
     commentsList.appendChild(newComment); // appendChild <태그>안에 요소를 하나씩만 넣을 수 있다.
 
-
-
     let replyData = {
       nickname,
       pw,
@@ -96,7 +94,7 @@ document.getElementById("reply").addEventListener("click", function (event) {
     localStorage.setItem(movieId, JSON.stringify(replyList));
     // localstorage 바구니안에 동일한 key이름으로는 1개의 value만 담을 수 있는데 전역변수로 선언 한 배열 하나만 넣는다
     // 그 배열의 안에 객체(각각의 영화리뷰 1개씩을 뜻함)를 push해서 담아도 배열 1개 즉 value 1개만 된다.
-
+    
 
   }
 });
@@ -187,36 +185,43 @@ deleteBtns.forEach((deleteBtn, index) => {
   deleteBtn.addEventListener("click", function () {
     // 선택된 버튼의 부모태그 
     const parentElement = deleteBtns[index].closest('.input-group');
-    // 로컬스토리지에서 선택된 밸류값
+    // 로컬스토리지에서 선택된 값
     const data = JSON.parse(localStorage.getItem(movieId));
-    const result = confirm("삭제하시겠습니까?");
+    
     // data 값의 패스워드 가져오기
     const pw = data[0].pw
 
-    if (result) {
-      const pwtext = prompt("비밀번호를 입력하세요");
-      if (pwtext) {
-        if (pwtext === pw) {
-          const onemore = confirm("정말 삭제하시겠습니까?");
-          if(onemore){
-            // 보통 리뷰 쓰다가 지우면 새로고침은 되지않고 그거만 지워지니 지워지도록 보여주기위해 display none
-            parentElement.style.display = 'none';
-            // 선택된 데이터 지우기
-            data.splice(index, 1);
-            // 남은 데이터 최신화
-            localStorage.setItem(movieId, JSON.stringify(data));
-          }else {
-            alert("취소되었습니다");
-          }
-        } else {
-          alert("비밀번호가 틀렸습니다");
-        }
-      } else {
-        alert("비밀번호가 필요합니다");
+    function delRev(){
+      const result = confirm("삭제하시겠습니까?");
+      if(!result){
+        alert("취소되었습니다");
+        return;
       }
-    } else {
-      alert("취소되었습니다");
+
+      const pwtext = prompt("비밀번호를 입력하세요");
+      if (!pwtext) {
+        alert("비밀번호가 필요합니다");
+        return;
+      }
+
+      if(pwtext !== pw){
+        alert("비밀번호가 틀렸습니다");
+        return;
+      }
+
+      const onemore = confirm("정말 삭제하시겠습니까?");
+      if(!onemore){
+        alert("취소되었습니다");
+        return;
+      }
+      // 보통 리뷰 쓰다가 지우면 새로고침은 되지않고 그거만 지워지니 지워지도록 보여주기위해 display none
+      parentElement.style.display = 'none';
+      // 선택된 데이터 지우기
+      data.splice(index, 1);
+      // 남은 데이터 최신화
+      localStorage.setItem(movieId, JSON.stringify(data));
     }
+    delRev();
   });
 });
 
