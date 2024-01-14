@@ -5,6 +5,13 @@
   background-position: center;
 }
 
+.mvCount {
+  display: grid;
+  grid-template-columns: 50px 20fr;
+  padding-bottom: 20px;
+  background-color: rgb(255, 243, 216);
+}
+
 body {
   background: linear-gradient(to bottom, rgb(255, 243, 216), rgb(255, 255, 255));
 }
