@@ -50,6 +50,11 @@ function renderCard(movies) {
             <p>${overviewLength(overview, 80)}</p>
           </div>
           </div>`;
+
+
+    let cards = document.getElementsByClassName("movie-card");
+    let Count = document.getElementById("count");
+    Count.innerText = cards.length + "건";
   });
 }
 // 클릭시 alert 창 (일단 임시함수로 변경..)
@@ -79,7 +84,6 @@ function movieIdtemp(id) {
 //   renderCard(searchMovieList); // 이 함수를 통해 전역변수를 끌어다가 함수 분리 및 movieCardList.innerHTML 통합
 //   console.log(searchMovieList);
 // }
-
 // form 이벤트
 const form = document.querySelector(".searchForm");
 form.addEventListener("submit", function searchMovie(e) {
