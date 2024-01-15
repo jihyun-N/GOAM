@@ -237,6 +237,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, requestOption
     title.textContent = `${response.title}`;
     back.appendChild(title);
 
+    //position: absolute 레이어를 하나 더 생성하는 개념. 위 레이어랑 아래 레이어는 분리 됨
     detailInfo.innerHTML += `
     <div style="position: absolute; top: 350px; left: 80%;">
       <img src="https://image.tmdb.org/t/p/w185${response.poster_path}" alt="${response.original_title}">
