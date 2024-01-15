@@ -191,9 +191,7 @@ document.getElementById("reply").addEventListener("click", function (event) {
 
 // ... (previous code)
 
-/**
- * Helper function to clear input fields.
- */
+//입력 필드 클리어
 function clearInputFields() {
   document.getElementById("nickname").value = "";
   document.getElementById("pw").value = "";
