@@ -51,7 +51,6 @@ function renderCard(movies) {
           </div>
           </div>`;
 
-
     let cards = document.getElementsByClassName("movie-card");
     let Count = document.getElementById("count");
     Count.innerText = cards.length + "건";
@@ -74,16 +73,6 @@ function movieIdtemp(id) {
   // replace는 현재 페이지에 덮어씌우기 때문에 replace를 사용한 다음에는 이전 페이지로 돌아갈 수 없다.
 }
 
-// 검색기능 구현 클릭시
-// function searchMovie() {
-//   let searchTagValue = document.getElementById("search-input").value.toLowerCase();
-
-//   const searchMovieList = searchdata.filter((movie) => {
-//     return movie.title.toLowerCase().includes(searchTagValue);
-//   });
-//   renderCard(searchMovieList); // 이 함수를 통해 전역변수를 끌어다가 함수 분리 및 movieCardList.innerHTML 통합
-//   console.log(searchMovieList);
-// }
 // form 이벤트
 const form = document.querySelector(".searchForm");
 form.addEventListener("submit", function searchMovie(e) {

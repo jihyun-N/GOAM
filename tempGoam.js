@@ -47,12 +47,12 @@ function createCommentElement(data) {
   $readButton.setAttribute("type", "button");
   $readButton.setAttribute("class", "btn btn-outline-dark");
   $readButton.addEventListener("click", function () {
-    // 선택된 버튼의 부모태그 
-    const parentElement = $readButton.closest('.input-group');
+    // 선택된 버튼의 부모태그
+    const parentElement = $readButton.closest(".input-group");
     // 선택된 태그 안의 이름, 평점, 리뷰 가져오기
-    const nicknameElement = parentElement.querySelector('strong');
-    const ratingElement = parentElement.querySelector('span span');
-    const commentTextElement = parentElement.querySelector('textarea');
+    const nicknameElement = parentElement.querySelector("strong");
+    const ratingElement = parentElement.querySelector("span span");
+    const commentTextElement = parentElement.querySelector("textarea");
 
     // 로컬스토리지에서 선택된 값
     const data = JSON.parse(localStorage.getItem(movieId));
@@ -73,33 +73,35 @@ function createCommentElement(data) {
     }
 
     // data 값의 패스워드 가져오기
-    const pw = data[realData].pw
+    const pw = data[realData].pw;
 
     function delRev() {
-      const result = confirm("삭제하시겠습니까?");
+      const result = confirm("삭제 해줭??");
       if (!result) {
-        alert("취소되었습니다");
+        alert("없애지마~~");
         return;
       }
 
-      const pwtext = prompt("비밀번호를 입력하세요");
+      const pwtext = prompt("비번~~");
       if (!pwtext) {
-        alert("비밀번호가 필요합니다");
+        alert("취소~");
         return;
       }
 
       if (pwtext !== pw) {
-        alert("비밀번호가 틀렸습니다");
+        alert("비번 알아와~");
         return;
       }
 
-      const onemore = confirm("정말 삭제하시겠습니까?");
+      const onemore = confirm("이젠 돌이킬 수 없는데?");
       if (!onemore) {
-        alert("취소되었습니다");
+        alert("삭제 취소용");
         return;
+      } else {
+        alert("흑 ㅠㅠ");
       }
       // 보통 리뷰 쓰다가 지우면 새로고침은 되지않고 그거만 지워지니 지워지도록 보여주기위해 display none
-      parentElement.style.display = 'none';
+      parentElement.style.display = "none";
       // 선택된 데이터 지우기
       data.splice(realData, 1);
       // 남은 데이터 최신화
@@ -152,7 +154,17 @@ document.getElementById("reply").addEventListener("click", function (event) {
     }
 
     if (nickname.length > 5) {
-      alert("너무길엉~");
+      alert("닉네임 너무길엉~");
+      return;
+    }
+
+    if (pw.length > 11) {
+      alert("비번 너무길엉~");
+      return;
+    }
+
+    if (pw.length < 5) {
+      alert("비번 너무짧엉~");
       return;
     }
 
@@ -163,11 +175,14 @@ document.getElementById("reply").addEventListener("click", function (event) {
       nickname,
       pw,
       rating,
-      commentText,
+      commentText
     };
 
-    replyList.push(replyData);
+    replyList.push(replyData); // 인덱스안에 obj를 넣는다. [{}, {}, {}, {}, {}, {}....]
     localStorage.setItem(movieId, JSON.stringify(replyList));
+    // 그 배열의 안에 객체(각각의 영화리뷰 1개씩을 뜻함)를 push해서 담아도 배열 1개 즉 value 1개만 된다.
+    // history.scrollRestoration = "auto";
+    // location.reload(true);
 
     // Clear input fields
     clearInputFields();
