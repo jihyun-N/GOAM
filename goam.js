@@ -56,7 +56,7 @@ function renderCard(movies) {
     Count.innerText = cards.length + "건";
   });
 }
-// 클릭시 alert 창 (일단 임시함수로 변경..)
+// 클릭시 상세페이지 이동
 function movieIdtemp(id) {
   localStorage.setItem("movieId", id); // 저장공간 -> 바구니
   //위와 같이 setItem 메소드를 사용하면 key와 value를 로컬 스토리지에 저장할 수 있습니다. 만약 이미 저장된 key 값이 있다면, 이전에 저장된 value 값을 대체합니다.
