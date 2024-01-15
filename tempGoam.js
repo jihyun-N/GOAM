@@ -30,6 +30,7 @@ if (replyData != null) {
  * @param {Object} data - Comment data { nickname, pw, rating, commentText }.
  */
 function createCommentElement(data) {
+  // div
   const newComment = document.createElement("div");
   newComment.setAttribute("class", "input-group comment");
   // span
@@ -46,15 +47,16 @@ function createCommentElement(data) {
   const $readButton = document.createElement("button");
   $readButton.setAttribute("type", "button");
   $readButton.setAttribute("class", "btn btn-outline-dark");
+  // 만들 때 바로 이벤트리스너도 같이 만들기
   $readButton.addEventListener("click", function () {
-    // 선택된 버튼의 부모태그
+    // 선택된 버튼의 부모태그 closest 가까운 상위태그 지정 
     const parentElement = $readButton.closest(".input-group");
     // 선택된 태그 안의 이름, 평점, 리뷰 가져오기
     const nicknameElement = parentElement.querySelector("strong");
     const ratingElement = parentElement.querySelector("span span");
     const commentTextElement = parentElement.querySelector("textarea");
 
-    // 로컬스토리지에서 선택된 값
+    // 로컬스토리지에서 선택된 값들
     const data = JSON.parse(localStorage.getItem(movieId));
     // 이름, 평점, 리뷰 내용 가져오기
     const nickname = nicknameElement.textContent;
@@ -63,7 +65,7 @@ function createCommentElement(data) {
 
     let realData = 0;
 
-    // 선택된 태그와 로컬스토리지의 값이 같은거 찾기
+    // 선택된 태그와 로컬스토리지의 값을 비교해서 같은거 찾기
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
       if (item.nickname === nickname && item.rating === rating && item.commentText === commentText) {
@@ -72,7 +74,7 @@ function createCommentElement(data) {
       }
     }
 
-    // data 값의 패스워드 가져오기
+    // 비교한 뒤 그 순서에 맞는 data 값의 패스워드 가져오기
     const pw = data[realData].pw;
 
     function delRev() {
@@ -116,6 +118,15 @@ function createCommentElement(data) {
   newComment.append($readTextarea);
   newComment.append($readButton);
 
+
+  // 위에 만든것을 하면
+  // newComment.innerHTML = `
+  //         <div class="input-group">
+  //         <span class="input-group-text"><strong>${nickname}</strong><span>${rating}</span></span>
+  //         <textarea class="form-control" aria-label="With textarea" disabled>${commentText}</textarea>
+  //         <button type="button" class="btn btn-outline-dark" id="deleteBtn">삭제</button>
+  //         </div>`;
+  // 이거와 같습니다
   return newComment;
 }
 
